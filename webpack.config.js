@@ -5,7 +5,7 @@ const CopyPlugin = require('copy-webpack-plugin')
 
 module.exports = {
   entry: {
-    main: ['@babel/polyfill','./src/ts/scripts.js']
+    main: ['@babel/polyfill','./src/ts/scripts.ts']
   },
   output: {
     filename: 'bundle.js',
