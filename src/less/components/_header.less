@@ -1,0 +1,48 @@
+@import "../_vars";
+
+.logo {
+  font-size: 2rem;
+
+  & a {
+    color: @primary;
+    text-decoration: none;
+  }
+}
+
+.header {
+  width: 100%;
+  padding: 10px 0;
+  position: absolute;
+  z-index: 3;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.user-icon {
+  background: url("../../img/users-icon.svg") no-repeat center;
+  width: 35px;
+  height: 25px;
+}
+
+.navigation {
+  max-width: 370px;
+  width: 100%;
+
+  &-list {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &-item {
+    font-size: 1.5rem;
+    & > button {
+      color: @primary;
+    }
+  }
+}
