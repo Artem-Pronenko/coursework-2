@@ -59,11 +59,11 @@ module.exports = {
       },
       {
         test: /\.css$/i,
-        use: ['style-loader', 'less-loader'],
+        use: ['style-loader', 'css-loader'],
       },
       {
         test: /\.less$/i,
-        use: ['style-loader', 'less-loader', 'less-loader'],
+        use: ['style-loader', 'css-loader', 'less-loader'],
       },
       {
         test: /\.(png|jpe?g|gif)$/i,
