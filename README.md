@@ -7,7 +7,7 @@
 ## Запуск приложения
 #### Клонируйте репозиторий
 ```
-git clone https://github.com/Artem-Pronenko/coursework.git
+git clone https://github.com/Artem-Pronenko/coursework-yana.git
 ```
 ###### в папке проекта:
 #### Установите зависимости
