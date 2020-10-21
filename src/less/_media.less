@@ -1,0 +1,48 @@
+@media (hover: hover) and (pointer: fine) {
+  .search-navigation__item:hover {
+    color: @primary;
+
+    & > button {
+      transform: translateX(50px);
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  :root {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 992px) {
+  :root {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    font-size: 10px;
+  }
+  .navigation {
+    max-width: 250px
+  }
+}
+
+@media (max-width: 642px) {
+  :root {
+    font-size: 8px;
+  }
+}
+
+@media (max-width: 542px) {
+  .map-wrapper {
+    display: none;
+  }
+}
+
+@media (max-width: 375px) {
+  .navigation {
+    max-width: 200px
+  }
+}
