@@ -21,7 +21,7 @@
         <nav class="navigation">
           <ul class="navigation-list">
             <li class="navigation-item btn">
-              <button id="search-button">Пошук</button>
+              <button id="search-open-button">Пошук</button>
             </li>
             <li class="navigation-item btn">Усі пам’ятки</li>
             <li class="navigation-item btn">
@@ -120,6 +120,15 @@
     </nav>
   </div>
 </section>
+
+<div class="modal modal__search" id="modal-search">
+  <button class="close" id="close-search">&#10006;</button>
+  <div class="modal-content">
+    <label for="search-input">Пошук</label>
+    <input id="search-input" class="search-input" type="text" placeholder="Де відпра́вимось?">
+    <button id="modal-button-search" class="modal-button modal-button__search">Знайти</button>
+  </div>
+</div>
 
 </body>
 </html>

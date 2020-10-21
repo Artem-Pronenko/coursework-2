@@ -7,6 +7,9 @@ module.exports = {
   entry: {
     main: ['@babel/polyfill','./src/ts/scripts.ts']
   },
+   resolve: {
+    extensions: ['.ts', '.js']
+  },
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
