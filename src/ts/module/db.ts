@@ -1,21 +1,5 @@
 import * as firebase from "firebase";
-
-interface IFirebaseConfig {
-  apiKey: string
-  authDomain: string
-  databaseURL: string
-  projectId: string
-  storageBucket: string
-  messagingSenderId: string
-  appId: string
-}
-
-interface IAddedSights {
-  name: object
-  info: string
-  rating: number
-  feedback?: object
-}
+import {IAddedSights, IFirebaseConfig} from "./interfaces";
 
 const firebaseConfig: IFirebaseConfig = {
   apiKey: "AIzaSyAoboeJztISbwTRDIk68wLT7KH325h_2-I",
@@ -32,13 +16,15 @@ firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
 const objAdd: IAddedSights = {
-  name: ['dost 2', 'dost'],
+  name: ['dost 1', 'dost'],
   info: 'this landmark reflects the city very well',
-  rating: 3,
+  rating: 4,
   feedback: {
     'Артем Кононенко': 'Какой-то отзыв 1',
     'Головня Яна': 'Какой-то отзыв отзыв отзыв',
-  }
+  },
+  title: 'Достопримечательность 4',
+  street: 'Вулиця Соборна'
 }
 
 function addSights(objAdd): void {
@@ -46,15 +32,25 @@ function addSights(objAdd): void {
     .then(console.log);
 }
 
-export function getSights(sightsName: string): void {
-  const dataSights = []
+const fixName = (name: string): string => {
+  return name.toLowerCase().split(' ').filter(i => i).join(' ')
+};
+
+export function getSights(name: string, street?: string): void {
+  const dataSights = [];
   db.collection('sights')
     .get()
     .then(res => {
-      res.forEach(doc => {
+      res.forEach((doc): void => {
         const data = doc.data();
-        for (let i = 0; i < data.name.length; i++) {
-          if (data.name[i].toLowerCase() === sightsName) {
+        if (!street) {
+          for (let i = 0; i < data.name.length; i++) {
+            if (data.name[i].toLowerCase() === fixName(name)) {
+              dataSights.push(data);
+            }
+          }
+        } else {
+          if (data.street.toLowerCase() === fixName(name)) {
             dataSights.push(data);
           }
         }
@@ -64,7 +60,6 @@ export function getSights(sightsName: string): void {
       localStorage.setItem('data', JSON.stringify(dataSights));
       location.href = 'sights.html';
     })
-
 
 }
 
