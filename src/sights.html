@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Sights</title>
+</head>
+<body>
+
+<div class="header">
+  <div class="container header__container">
+    <div class="logo">
+      <a href="index.html">Вінниця 24/7</a>
+    </div>
+    <nav class="navigation">
+      <ul class="navigation-list">
+        <li class="navigation-item btn">
+          <button id="search-open-button">Пошук</button>
+        </li>
+        <li class="navigation-item btn">Усі пам’ятки</li>
+        <li class="navigation-item btn">
+          <button class="user-icon"></button>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+<main class="section section__cards">
+  <div class="container">
+    <div class="cards" id="cards-out">
+    
+    </div>
+  </div>
+</main>
+
+
+<section class="search-section">
+  <h2 class="title title__search">Пошук по вулицям</h2>
+  <div class="container">
+    <nav class="search-navigation">
+      <ul class="search-navigation__list">
+        <li class="search-navigation__item">
+          <button>
+            Вулиця Князів Коріатовичів
+          </button>
+        </li>
+        <li class="search-navigation__item">
+          <button>
+            Вулиця Соборна
+          </button>
+        </li>
+        <li class="search-navigation__item">
+          <button>
+            Вулиця Мури
+          </button>
+        </li>
+        <li class="search-navigation__item">
+          <button>
+            Вулиця Пирогова
+          </button>
+        </li>
+        <li class="search-navigation__item">
+          <button>
+            Вулиця М. Оводова
+          </button>
+        </li>
+        <li class="search-navigation__item">
+          <button>
+            Вулиця Андрія Первозваного
+          </button>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</section>
+
+<div class="modal modal__search" id="modal-search">
+  <button class="close" id="close-search">&#10006;</button>
+  <div class="modal-content">
+    <label for="search-input">Пошук</label>
+    <input id="search-input" class="search-input" type="text" placeholder="Де відпра́вимось?">
+    <button id="modal-button-search" class="modal-button modal-button__search">Знайти</button>
+  </div>
+</div>
+
+</body>
+</html>

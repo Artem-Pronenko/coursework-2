@@ -20,8 +20,19 @@ module.exports = {
   devtool: 'source-map',
   plugins: [
     new HTMLPlugin({
-      template: './src/index.html'
-    }),
+			template: `./src/index.html`,
+			minify: {
+				collapseWhitespace: true
+      },
+      filename: 'index.html'
+		}),
+    new HTMLPlugin({
+			template: './src/sights.html',
+			minify: {
+				collapseWhitespace: true
+      },
+      filename: 'sights.html'
+		}),
     new CleanWebpackPlugin(),
     new CopyPlugin({
       patterns: [

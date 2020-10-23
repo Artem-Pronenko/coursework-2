@@ -1,6 +1,8 @@
+import {getSights} from './db';
+
 export const search = (): void => {
   const modalSearch: HTMLElement | null = document.getElementById('modal-search');
-  const searchInput = (<HTMLInputElement>document.getElementById('search-input'));
+  const searchInput = document.getElementById('search-input') as HTMLInputElement;
   const buttonSearch: HTMLElement | null = document.getElementById('modal-button-search');
 
   const handlerListener = (event): void => {
@@ -19,7 +21,7 @@ export const search = (): void => {
       searchInput.value = ''
       searchInput.focus()
     } else {
-      //... запрос на БД
+      getSights(searchInputValue)
     }
   }
 

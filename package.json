@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
-    "firebase": "^7.22.1",
+    "firebase": "^7.24.0",
     "swiper": "^6.3.4"
   }
 }
