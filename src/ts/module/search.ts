@@ -6,11 +6,11 @@ export const search = (): void => {
   const buttonSearch: HTMLElement | null = document.getElementById('modal-button-search');
 
   const handlerListener = (event): void => {
-    const {target} = event
+    const {target} = event;
     if (target.matches('#search-open-button, #close-search')) {
-      modalSearch.classList.toggle('modal-active')
+      modalSearch.classList.toggle('modal-active');
     } else if (target.matches('#modal-button-search')) {
-      valid()
+      valid();
     }
   }
 
@@ -18,12 +18,12 @@ export const search = (): void => {
     const searchInputValue = searchInput.value
     if (searchInputValue.trim() === '') {
       alert('Поле должно быть заполнено!')
-      searchInput.value = ''
-      searchInput.focus()
+      searchInput.value = '';
+      searchInput.focus();
     } else {
-      getSights(searchInputValue)
+      getSights(searchInputValue);
     }
   }
 
-  document.body.addEventListener('click', handlerListener)
+  document.body.addEventListener('click', handlerListener);
 };

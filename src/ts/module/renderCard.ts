@@ -1,6 +1,6 @@
 //
 export function renderCard(props): HTMLDivElement {
-  const $card = document.createElement('div')
+  const $card: HTMLDivElement = document.createElement('div');
 
   $card.innerHTML = `
     <div class="card card__block">
@@ -18,6 +18,6 @@ export function renderCard(props): HTMLDivElement {
       <textarea id="feedback-input" placeholder="Напишіть відгук" class="feedback feedback__input"></textarea>
       <button class="btn feedback-button" id="added-feedback-button">Відправити</button>
     </div>
-  `
-  return $card
+  `;
+  return $card;
 }
