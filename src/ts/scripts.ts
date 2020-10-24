@@ -1,6 +1,6 @@
 import '../less/style.less';
 // import './app';
-import './module/slider';
+import './module/sliders';
 import {search} from './module/search';
 import './module/db';
 import {renderCard} from "./module/renderCard";

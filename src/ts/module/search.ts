@@ -15,6 +15,11 @@ export const search = (): void => {
     if (target.closest('.search-navigation__item > button')) {
       getSights(target.textContent, 'street');
     }
+
+    // поиск всех достопримечательностей
+    if (target.matches('#all-sights')) {
+      getSights('dost');
+    }
   }
 
   // базовая проверка на валидность

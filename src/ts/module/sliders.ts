@@ -19,4 +19,21 @@ const mainSlider: object = new Swiper('.swiper-container', {
   spaceBetween: 100,
   speed: 800,
   parallax: true
+})
+
+const cardSlider: object = new Swiper('.full-card__slider', {
+  loop: true,
+  navigation: {
+    nextEl: '.button_next-card',
+    prevEl: '.button_prev-card',
+  },
+  autoplay: {
+    delay: 5000
+  },
+  keyboard: {
+    enabled: true,
+    onlyInViewport: true,
+  },
+  speed: 500,
+  parallax: true
 });
