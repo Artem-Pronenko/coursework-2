@@ -8,11 +8,16 @@ export interface IFirebaseConfig {
   appId: string
 }
 
+interface IFeedback {
+ name: string
+ text: string
+}
+
 export interface IAddedSights {
   name: object
   info: string
   rating: number
   title: string
-  feedback?: object
+  feedback?: Array<IFeedback>
   street: string
 }

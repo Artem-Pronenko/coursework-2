@@ -1,7 +1,8 @@
 import {getSights} from './db';
+import {HTMLEl} from './type';
 
 export const search = (): void => {
-  const modalSearch: HTMLElement | null = document.getElementById('modal-search');
+  const modalSearch: HTMLEl = document.getElementById('modal-search');
   const searchInput = document.getElementById('search-input') as HTMLInputElement;
 
   const handlerListener = (event): void => {
@@ -24,7 +25,7 @@ export const search = (): void => {
 
   // базовая проверка на валидность
   const valid = (): void => {
-    const searchInputValue = searchInput.value
+    const searchInputValue: string = searchInput.value
     if (searchInputValue.trim() === '') {
       alert('Поле должно быть заполнено!')
       searchInput.value = '';

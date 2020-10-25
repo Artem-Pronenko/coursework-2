@@ -1,5 +1,15 @@
 @import "../_vars";
 
+.card-wrap {
+  background-color: rgba(0, 0, 0, 0.59);
+  position: fixed;
+  z-index: 8;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
 .full {
   &-card {
     max-width: 1000px;
@@ -8,8 +18,10 @@
     position: fixed;
     top: 50%;
     left: 50%;
+    z-index: 9;
     transform: translate(-50%, -50%);
     background-color: @primary;
+    border-radius: 4px;
 
     &__close {
       position: absolute;

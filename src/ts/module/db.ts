@@ -1,5 +1,5 @@
-import * as firebase from "firebase";
-import {IAddedSights, IFirebaseConfig} from "./interfaces";
+import * as firebase from 'firebase';
+import {IAddedSights, IFirebaseConfig} from './interfaces';
 
 const firebaseConfig: IFirebaseConfig = {
   apiKey: "AIzaSyAoboeJztISbwTRDIk68wLT7KH325h_2-I",
@@ -17,23 +17,31 @@ const db = firebase.firestore();
 
 const objAdd: IAddedSights = {
   name: ['dost 1', 'dost'],
-  info: 'this landmark reflects the city very well',
+  info: 'this landmark reflects the city very well this landmark reflects the city very well this landmark reflects the city very well',
   rating: 4,
-  feedback: {
-    'Артем Кононенко': 'Какой-то отзыв 1',
-    'Головня Яна': 'Какой-то отзыв отзыв отзыв',
-  },
-  title: 'Достопримечательность 4',
-  street: 'Вулиця Соборна'
+  feedback: [
+    {
+      name: 'Yana',
+      text: `Lorem nobis?`
+    },
+    {
+      name: 'Yana',
+      text: `Lorem Facilis, nobis?`
+    }
+  ],
+  title: 'Достопримечательность 99',
+  street: 'Вулиця Соборна',
+
 }
 
-function addSights(objAdd): void {
+function addSights(objAdd: IAddedSights): void {
   db.collection('sights').add(objAdd)
-    .then(console.log);
+    .then(console.log)
+    .catch(console.error);
 }
 
 const fixName = (name: string): string => {
-  return name.toLowerCase().split(' ').filter(i => i).join(' ')
+  return name.toLowerCase().split(' ').filter(i => i).join(' ');
 };
 
 export function getSights(name: string, street?: string): void {
@@ -59,6 +67,9 @@ export function getSights(name: string, street?: string): void {
     .then(() => {
       localStorage.setItem('data', JSON.stringify(dataSights));
       location.href = 'sights.html';
+    })
+    .catch(err => {
+      console.log(err)
     })
 
 }
