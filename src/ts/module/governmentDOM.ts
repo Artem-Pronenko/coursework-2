@@ -1,9 +1,10 @@
 import {HTMLEl} from './type';
-import {createFullCard} from './renderCard';
+import {createFullCard, createMapCard} from './renderCard';
 import {IAddedSights} from './interfaces';
 import {sliderCard} from './sliders';
+import {getSights} from './db';
 
-export function governmentDOM(): void {
+export function governmentDOMCard(): void {
   const cardWrapper: HTMLEl = document.getElementById('cards-out');
   let cardClose: HTMLEl;
 
@@ -28,4 +29,32 @@ export function governmentDOM(): void {
 
 
   cardWrapper.addEventListener('click', openCard);
+}
+
+export function governmentDOMMap(): void {
+  const map: HTMLEl = document.getElementById('map');
+
+  function openMapCard(event): void {
+    const button: HTMLEl = event.target.closest('.map-mark');
+
+    if (button) {
+      const searchValue: string = button.dataset.street;
+      const mouseX: number = event.pageX;
+      const mouseY: number = event.pageY;
+
+      getSights(searchValue, true).then(data => {
+        document.querySelector('.map-card-item') && document.querySelector('.map-card-item').remove();
+
+        document.body.append(createMapCard(data[0]));
+        const card: HTMLEl = document.querySelector('.map-card-item');
+        card.style.top = mouseY + 'px';
+        card.style.left = mouseX + 'px';
+        sliderCard('full-card__slider', 'button_next-card', 'button_prev-card');
+      });
+
+    }
+
+  }
+
+  map.addEventListener('click', openMapCard);
 }

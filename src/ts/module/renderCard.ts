@@ -3,7 +3,8 @@ import {HTMLEl} from './type';
 
 export function createPrevCard(props): HTMLDivElement {
   const $card: HTMLDivElement = document.createElement('div');
-  $card.classList.add('card', 'card__block')
+  $card.classList.add('card', 'card__block');
+
   $card.innerHTML = `
     <h3 class="card-title">${props.title}</h3>
     <div class="card-img-block">
@@ -23,6 +24,7 @@ export function createPrevCard(props): HTMLDivElement {
 export function createFullCard(props: IAddedSights): HTMLDivElement {
   const $card: HTMLDivElement = document.createElement('div');
   $card.classList.add('card-wrap');
+
   $card.innerHTML = `
     <div class="full-card">
       <button class="full-card__close">&#10006;</button>
@@ -61,6 +63,31 @@ export function createFullCard(props: IAddedSights): HTMLDivElement {
 
 }
 
+export function createMapCard(props: IAddedSights): HTMLEl {
+  const $card: HTMLEl = document.createElement('div');
+  $card.classList.add('map-card-item');
+
+  $card.innerHTML = `
+    <h3>${props.title}</h3>
+    <div class="full-card__slider">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img src="img/photo-slide2.jpg" alt="слайд: фто міста">
+        </div>
+        <div class="swiper-slide">
+          <img src="img/photo-slide3.jpg" alt="слайд: фто міста">
+        </div>
+      </div>
+      <div class="swiper-button swiper-button_prev btn button_prev-card"></div>
+      <div class="swiper-button swiper-button_next btn button_next-card"></div>
+    </div>
+    <p>${props.info}</p>
+  `;
+
+  return $card;
+
+}
+
 export function createWarningCard(text: string = 'Помилка!'): HTMLEl {
   const $card: HTMLEl = document.createElement('div');
   $card.innerHTML = `
@@ -70,5 +97,5 @@ export function createWarningCard(text: string = 'Помилка!'): HTMLEl {
    <br>
   `;
 
-  return $card
+  return $card;
 }

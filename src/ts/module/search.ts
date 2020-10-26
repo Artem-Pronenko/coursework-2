@@ -14,26 +14,26 @@ export const search = (): void => {
     }
     // поиск по улицам
     if (target.closest('.search-navigation__item > button')) {
-      getSights(target.textContent, 'street');
+      getSights(target.textContent, true).then(() => location.href = 'sights.html');
     }
 
     // поиск всех достопримечательностей
     if (target.matches('#all-sights')) {
-      getSights('dost');
+      getSights('dost').then(() => location.href = 'sights.html');
     }
-  }
+  };
 
   // базовая проверка на валидность
   const valid = (): void => {
-    const searchInputValue: string = searchInput.value
+    const searchInputValue: string = searchInput.value;
     if (searchInputValue.trim() === '') {
-      alert('Поле должно быть заполнено!')
+      alert('Поле должно быть заполнено!');
       searchInput.value = '';
       searchInput.focus();
     } else {
-      getSights(searchInputValue);
+      getSights(searchInputValue).then(() => location.href = 'sights.html');
     }
-  }
+  };
 
   document.body.addEventListener('click', handlerListener);
 };

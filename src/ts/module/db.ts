@@ -1,14 +1,15 @@
 import * as firebase from 'firebase';
 import {IAddedSights, IFirebaseConfig} from './interfaces';
+import {sightsName} from './type';
 
 const firebaseConfig: IFirebaseConfig = {
-  apiKey: "AIzaSyAoboeJztISbwTRDIk68wLT7KH325h_2-I",
-  authDomain: "yana-coursework.firebaseapp.com",
-  databaseURL: "https://yana-coursework.firebaseio.com",
-  projectId: "yana-coursework",
-  storageBucket: "yana-coursework.appspot.com",
-  messagingSenderId: "1074245141454",
-  appId: "1:1074245141454:web:95515415601ba28827219f"
+  apiKey: 'AIzaSyAoboeJztISbwTRDIk68wLT7KH325h_2-I',
+  authDomain: 'yana-coursework.firebaseapp.com',
+  databaseURL: 'https://yana-coursework.firebaseio.com',
+  projectId: 'yana-coursework',
+  storageBucket: 'yana-coursework.appspot.com',
+  messagingSenderId: '1074245141454',
+  appId: '1:1074245141454:web:95515415601ba28827219f'
 };
 
 firebase.initializeApp(firebaseConfig);
@@ -30,13 +31,15 @@ const objAdd: IAddedSights = {
     }
   ],
   title: 'Достопримечательность 99',
-  street: 'Вулиця Соборна',
+  street: 'Вулиця Петра',
 
-}
+};
 
 function addSights(objAdd: IAddedSights): void {
   db.collection('sights').add(objAdd)
-    .then(console.log)
+    .then(() => {
+      console.log('added')
+    })
     .catch(console.error);
 }
 
@@ -44,14 +47,14 @@ const fixName = (name: string): string => {
   return name.toLowerCase().split(' ').filter(i => i).join(' ');
 };
 
-export function getSights(name: string, street?: string): void {
+export function getSights(name: sightsName, streetBoolean?: boolean) {
   const dataSights = [];
-  db.collection('sights')
+  return db.collection('sights')
     .get()
     .then(res => {
       res.forEach((doc): void => {
         const data = doc.data();
-        if (!street) {
+        if (!streetBoolean) {
           for (let i = 0; i < data.name.length; i++) {
             if (data.name[i].toLowerCase() === fixName(name)) {
               dataSights.push(data);
@@ -66,10 +69,10 @@ export function getSights(name: string, street?: string): void {
     })
     .then(() => {
       localStorage.setItem('data', JSON.stringify(dataSights));
-      location.href = 'sights.html';
+      return dataSights
     })
     .catch(err => {
-      console.log(err)
+      console.error(err)
     })
 
 }
