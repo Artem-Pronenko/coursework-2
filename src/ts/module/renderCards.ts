@@ -99,3 +99,21 @@ export function createWarningCard(text: string = 'Помилка!'): HTMLEl {
 
   return $card;
 }
+
+
+export function createUserCard(): HTMLEl {
+  const $modal: HTMLEl = document.createElement('div');
+  $modal.classList.add('modal-account');
+
+  $modal.innerHTML = `
+    <div class="modal-account-content">
+      <button class="modal-account-close" id="close-modal-account">&#10006;</button>
+      <button class="offset-animation-button button-sign-in" id="button-sign-in">Войти</button>
+      <button class="offset-animation-button button-sign-in d-n" id="button-new-sign-in">Сменить аккаунт</button>
+      <button class="offset-animation-button button-sign-out" id="button-sign-out">Выйти</button>
+    </div>
+  `;
+
+  return $modal;
+
+}

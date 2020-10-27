@@ -2,9 +2,11 @@ import '../less/style.less';
 import './module/sliders';
 import {search} from './module/search';
 import './module/db';
-import {createPrevCard, createWarningCard} from './module/renderCard';
-import {governmentDOMCard, governmentDOMMap} from './module/governmentDOM';
+import {createPrevCard, createWarningCard} from './module/renderCards';
+import {governmentDOMCard, governmentDOMMap} from './module/governmentMap';
 import {HTMLEl} from './module/type';
+import {account, AuthStateChanged} from './module/accountLogin';
+import * as firebase from 'firebase';
 
 search();
 
@@ -24,3 +26,6 @@ document.addEventListener('DOMContentLoaded', (): void => {
   }
 
 });
+
+document.getElementById('account-button').addEventListener('click', account);
+document.addEventListener('DOMContentLoaded', AuthStateChanged);

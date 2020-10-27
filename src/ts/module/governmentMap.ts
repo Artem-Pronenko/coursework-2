@@ -1,5 +1,5 @@
 import {HTMLEl} from './type';
-import {createFullCard, createMapCard} from './renderCard';
+import {createFullCard, createMapCard} from './renderCards';
 import {IAddedSights} from './interfaces';
 import {sliderCard} from './sliders';
 import {getSights} from './db';
