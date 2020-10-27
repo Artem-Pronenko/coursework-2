@@ -6,7 +6,6 @@ import {createPrevCard, createWarningCard} from './module/renderCards';
 import {governmentDOMCard, governmentDOMMap} from './module/governmentMap';
 import {HTMLEl} from './module/type';
 import {account, AuthStateChanged} from './module/accountLogin';
-import * as firebase from 'firebase';
 
 search();
 
