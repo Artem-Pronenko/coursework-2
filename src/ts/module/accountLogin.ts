@@ -10,6 +10,11 @@ export function account(): void {
   const buttonNewAccount = document.getElementById('button-new-sign-in') as HTMLButtonElement;
 
 
+  if (user) {
+    buttonSignIn && buttonSignIn.classList.add('d-n');
+    buttonNewAccount && buttonNewAccount.classList.remove('d-n');
+  }
+
   function signIn(): void {
     const provider: firebase.auth.GoogleAuthProvider = new firebase.auth.GoogleAuthProvider();
 
