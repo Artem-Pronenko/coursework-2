@@ -21,3 +21,7 @@ export interface IAddedSights {
   feedback?: Array<IFeedback>
   street: string
 }
+
+export interface IAddedSightsId extends IAddedSights {
+  id: string
+}

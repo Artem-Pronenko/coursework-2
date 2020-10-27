@@ -43,6 +43,22 @@ function addSights(objAdd: IAddedSights): void {
     .catch(console.error);
 }
 
+
+export function setSights(userName: string, comments: string, oldComments: Array<object>, id: string): Promise<void> {
+  return db.collection('sights').doc(id).set({
+    feedback: [
+      ...oldComments,
+      {
+        name: userName,
+        text: comments
+      }
+    ]
+  }, {merge: true})
+    .catch((error) => {
+      console.error(error)
+    })
+}
+
 const fixName = (name: string): string => {
   return name.toLowerCase().split(' ').filter(i => i).join(' ');
 };
@@ -57,7 +73,7 @@ export function getSights(name: sightsName, streetBoolean?: boolean) {
         if (!streetBoolean) {
           for (let i = 0; i < data.name.length; i++) {
             if (data.name[i].toLowerCase() === fixName(name)) {
-              dataSights.push(data);
+              dataSights.push({data: data, id: doc.id});
             }
           }
         } else {

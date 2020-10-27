@@ -1,8 +1,9 @@
 import {HTMLEl} from './type';
 import {createFullCard, createMapCard} from './renderCards';
-import {IAddedSights} from './interfaces';
+import {IAddedSightsId} from './interfaces';
 import {sliderCard} from './sliders';
 import {getSights} from './db';
+import {addedComments} from './addedComments';
 
 export function governmentDOMCard(): void {
   const cardWrapper: HTMLEl = document.getElementById('cards-out');
@@ -17,12 +18,13 @@ export function governmentDOMCard(): void {
     const card: HTMLEl = event.target.closest('.card');
 
     if (card) {
-      const cardTitle: IAddedSights = JSON.parse(card.querySelector('[data-data]').textContent);
+      const cardTitle: IAddedSightsId = JSON.parse(card.querySelector('[data-data]').textContent);
       document.body.append(createFullCard(cardTitle));
       sliderCard('full-card__slider', 'button_next-card', 'button_prev-card');
 
       cardClose = document.querySelector('.full-card__close');
       cardClose.addEventListener('click', closeCard.bind(null, document.querySelector('.card-wrap')));
+      addedComments(cardTitle.feedback, cardTitle.id);
     }
 
   }

@@ -1,7 +1,8 @@
 import {IAddedSights} from './interfaces';
 import {HTMLEl} from './type';
 
-export function createPrevCard(props): HTMLDivElement {
+export function createPrevCard({data: props, id}): HTMLDivElement {
+  props.id = id;
   const $card: HTMLDivElement = document.createElement('div');
   $card.classList.add('card', 'card__block');
 
@@ -45,7 +46,7 @@ export function createFullCard(props: IAddedSights): HTMLDivElement {
           </div>
           <p class="full-card__text">${props.info}</p>
           <div class="added-comments added-comments__block">
-            <form class="added-comments__form">
+            <form class="added-comments__form" id="added-comments-form">
               <label for="added-comments-input">Оставить комментарий</label>
               <textarea 
                 type="text" 
@@ -54,6 +55,7 @@ export function createFullCard(props: IAddedSights): HTMLDivElement {
                 id="added-comments-input"
                ></textarea>
               <button class="added-comments__button">Залишити</button>
+              <span class="invalid d-n">Це поле обов'язкове!</span>
             </form>
           </div>
           <div class="comments-wrapper">

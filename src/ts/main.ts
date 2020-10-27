@@ -3,7 +3,7 @@ import './module/sliders';
 import {search} from './module/search';
 import './module/db';
 import {createPrevCard, createWarningCard} from './module/renderCards';
-import {governmentDOMCard, governmentDOMMap} from './module/governmentMap';
+import {governmentDOMCard, governmentDOMMap} from './module/governmentDOM';
 import {HTMLEl} from './module/type';
 import {account, AuthStateChanged} from './module/accountLogin';
 
@@ -12,7 +12,7 @@ search();
 document.addEventListener('DOMContentLoaded', (): void => {
   const url: string = window.location.href;
   const lastWordInUrl: string = url.substring(url.lastIndexOf('/') + 1, url.length);
-  const data = localStorage.getItem('data');
+  const data: string = localStorage.getItem('data');
   const cardsOut: HTMLEl = document.getElementById('cards-out');
 
   if (lastWordInUrl === 'sights.html' && JSON.parse(data).length) {
