@@ -36,6 +36,12 @@ export function governmentDOMCard(): void {
 export function governmentDOMMap(): void {
   const map: HTMLEl = document.getElementById('map');
 
+
+  function goToFullCard() {
+    const cardTitle: string = document.querySelector('.map-card-title').textContent.trim();
+    getSights(cardTitle).then(() => location.href = 'sights.html')
+  }
+
   function openMapCard(event): void {
     const button: HTMLEl = event.target.closest('.map-mark');
 
@@ -52,11 +58,30 @@ export function governmentDOMMap(): void {
         card.style.top = mouseY + 'px';
         card.style.left = mouseX + 'px';
         sliderCard('full-card__slider', 'button_next-card', 'button_prev-card');
+
+        const text: NodeListOf<HTMLEl> = document.querySelectorAll('.map-card-text');
+        sliceText(text);
+        card.addEventListener('click', (event: { target }): void => {
+          !event.target.closest('.swiper-button') && goToFullCard()
+        })
       });
 
+    } else {
+      document.querySelector('.map-card-item') && document.querySelector('.map-card-item').remove();
     }
 
   }
 
   map.addEventListener('click', openMapCard);
+}
+
+export function sliceText(textArr) {
+  textArr.forEach(item => {
+    const textValue = item.textContent;
+    let newText: string;
+    if (textValue.length > 75) {
+      newText = textValue.slice(-textValue.length, 75)
+    }
+    item.textContent = newText + '...';
+  })
 }

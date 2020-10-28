@@ -92,7 +92,7 @@ export function createMapCard({data: props}): HTMLEl {
   $card.classList.add('map-card-item');
 
   $card.innerHTML = `
-    <h3>${props.title}</h3>
+    <h3 class="map-card-title">${props.title}</h3>
     <div class="full-card__slider">
       <div class="swiper-wrapper">
   ${renderSlider(props.imgArr, props.title)}
@@ -100,7 +100,7 @@ export function createMapCard({data: props}): HTMLEl {
       <div class="swiper-button swiper-button_prev btn button_prev-card"></div>
       <div class="swiper-button swiper-button_next btn button_next-card"></div>
     </div>
-    <p>${props.info}</p>
+    <p class="map-card-text">${props.info}</p>
   `;
 
   return $card;

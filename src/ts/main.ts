@@ -3,7 +3,7 @@ import './module/sliders';
 import {search} from './module/search';
 import './module/db';
 import {createPrevCard, createWarningCard} from './module/renderCards';
-import {governmentDOMCard, governmentDOMMap} from './module/governmentDOM';
+import {governmentDOMCard, governmentDOMMap, sliceText} from './module/governmentDOM';
 import {HTMLEl} from './module/type';
 import {account, AuthStateChanged} from './module/accountLogin';
 
@@ -19,15 +19,7 @@ document.addEventListener('DOMContentLoaded', (): void => {
     JSON.parse(data).forEach(item => cardsOut.append(createPrevCard(item)));
 
     const infoText: NodeListOf<HTMLEl> = document.querySelectorAll('.card-info');
-    infoText.forEach(item => {
-      const infoTextValue = item.textContent;
-      let newText: string;
-      if (infoTextValue.length > 75) {
-        newText = infoTextValue.slice(-infoTextValue.length, 75)
-      }
-      item.textContent = newText + '...';
-    });
-
+    sliceText(infoText);
 
     governmentDOMCard();
   } else if (lastWordInUrl === 'sights.html' && !JSON.parse(data).length) {
