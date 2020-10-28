@@ -23,11 +23,22 @@
     background-color: @primary;
     border-radius: 4px;
 
+    &-header {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    &__title {
+      font-size: 24px;
+    }
+
     &__close {
       position: absolute;
       top: 5px;
       right: 5px;
       padding: 0;
+      font-size: 16px;
     }
 
     &__content {
@@ -105,10 +116,18 @@
 .added-comments {
   flex-basis: 100%;
 
+  &__button {
+    font-size: 16px;
+  }
+
   &__form {
     display: flex;
     flex-direction: column;
     width: 75%;
+
+    & > label {
+      font-size: 16px;
+    }
   }
 
   &__block {
@@ -129,4 +148,8 @@
     background-color: aquamarine;
   }
 
+}
+
+.rating, .card {
+  font-size: 16px;
 }

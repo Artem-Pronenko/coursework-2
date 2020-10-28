@@ -17,6 +17,18 @@ document.addEventListener('DOMContentLoaded', (): void => {
 
   if (lastWordInUrl === 'sights.html' && JSON.parse(data).length) {
     JSON.parse(data).forEach(item => cardsOut.append(createPrevCard(item)));
+
+    const infoText: NodeListOf<HTMLEl> = document.querySelectorAll('.card-info');
+    infoText.forEach(item => {
+      const infoTextValue = item.textContent;
+      let newText: string;
+      if (infoTextValue.length > 75) {
+        newText = infoTextValue.slice(-infoTextValue.length, 75)
+      }
+      item.textContent = newText + '...';
+    });
+
+
     governmentDOMCard();
   } else if (lastWordInUrl === 'sights.html' && !JSON.parse(data).length) {
     cardsOut.append(createWarningCard('Таких пам\'яток не знайдено. Або на цій вулиці їх немає!'));

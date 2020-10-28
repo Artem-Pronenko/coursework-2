@@ -24,6 +24,11 @@
   :root {
     font-size: 12px;
   }
+
+  .full-card__text {
+    margin: 8px 0;
+    flex-basis: 100%;
+  }
 }
 
 @media (max-width: 768px) {
@@ -33,6 +38,14 @@
 
   .navigation {
     max-width: 250px
+  }
+
+  .card__block {
+    margin-right: 0;
+  }
+
+  .full-card__text {
+    text-align: justify;
   }
 }
 
@@ -45,6 +58,14 @@
 @media (max-width: 542px) {
   .map-wrapper {
     display: none;
+  }
+
+  .full-card__slider {
+    height: 250px;
+  }
+
+  .full-card__title {
+    font-size: 22px;
   }
 }
 

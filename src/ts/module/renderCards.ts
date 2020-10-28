@@ -2,10 +2,10 @@ import {IAddedSights} from './interfaces';
 import {HTMLEl} from './type';
 
 
-function renderSlider(arrImg) {
+function renderSlider(arrImg: Array<string>, imgName: string) {
   return arrImg.map(item => `
       <div class="swiper-slide full-card__slide">
-        <img src="${item}" alt="слайд: фото">
+        <img src="${item}" alt="фото: ${imgName}">
       </div>
     `).join('');
 }
@@ -18,10 +18,10 @@ export function createPrevCard({data: props, id}): HTMLDivElement {
   $card.innerHTML = `
     <h3 class="card-title">${props.title}</h3>
     <div class="card-img-block">
-      <img class="card-img" src="https://media-cdn.tripadvisor.com/media/photo-p/0d/79/e9/04/caption.jpg" 
-        alt="церковь">
+      <img class="card-img" src="${props.imgArr[0]}" alt="фото: ${props.title}">
     </div>
     <p class="card-info">${props.info}</p>
+    <strong>${props.street}</strong>
     <div class="rating rating__block">
       <div class="rating__text">Оцінка:</div>
       <div class="rating-num"><span>${props.rating}</span>/5</div>
@@ -39,11 +39,17 @@ export function createFullCard(props: IAddedSights): HTMLDivElement {
     <div class="full-card">
       <button class="full-card__close">&#10006;</button>
       <div class="full-card__content">
-        <h3 class="full-card__title">${props.title}</h3>
+        <div class="full-card-header">
+          <h3 class="full-card__title">${props.title}</h3>
+          <div class="rating">
+            <span>Оцiнка: </span>
+            <strong><span>${props.rating}</span>/5</strong>
+          </div>
+        </div>
         <div class="full-card__wrapper">
           <div class="full-card__slider">
             <div class="swiper-wrapper">
-  ${renderSlider(props.imgArr)}
+  ${renderSlider(props.imgArr, props.title)}
             </div>
             <div class="swiper-button swiper-button_prev btn button_prev-card"></div>
             <div class="swiper-button swiper-button_next btn button_next-card"></div>
@@ -89,7 +95,7 @@ export function createMapCard({data: props}): HTMLEl {
     <h3>${props.title}</h3>
     <div class="full-card__slider">
       <div class="swiper-wrapper">
-  ${renderSlider(props.imgArr)}
+  ${renderSlider(props.imgArr, props.title)}
       </div>
       <div class="swiper-button swiper-button_prev btn button_prev-card"></div>
       <div class="swiper-button swiper-button_next btn button_next-card"></div>
