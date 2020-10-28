@@ -16,6 +16,7 @@ interface IFeedback {
 export interface IAddedSights {
   name: object
   info: string
+  imgArr: Array<string>
   rating: number
   title: string
   feedback?: Array<IFeedback>
