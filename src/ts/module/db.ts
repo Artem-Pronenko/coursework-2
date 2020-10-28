@@ -74,7 +74,6 @@ export function getSights(name: sightsName, streetBoolean?: boolean) {
           }
         } else {
           if (data.street.toLowerCase() === fixName(name)) {
-            console.log(fixName(name));
             dataSights.push({data: data, id: doc.id});
           }
         }

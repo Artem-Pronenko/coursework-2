@@ -1,6 +1,15 @@
 import {IAddedSights} from './interfaces';
 import {HTMLEl} from './type';
 
+
+function renderSlider(arrImg) {
+  return arrImg.map(item => `
+      <div class="swiper-slide full-card__slide">
+        <img src="${item}" alt="слайд: фото">
+      </div>
+    `).join('');
+}
+
 export function createPrevCard({data: props, id}): HTMLDivElement {
   props.id = id;
   const $card: HTMLDivElement = document.createElement('div');
@@ -34,12 +43,7 @@ export function createFullCard(props: IAddedSights): HTMLDivElement {
         <div class="full-card__wrapper">
           <div class="full-card__slider">
             <div class="swiper-wrapper">
-              <div class="swiper-slide">
-                <img src="img/photo-slide2.jpg" alt="слайд: фто міста">
-              </div>
-              <div class="swiper-slide">
-                <img src="img/photo-slide3.jpg" alt="слайд: фто міста">
-              </div>
+  ${renderSlider(props.imgArr)}
             </div>
             <div class="swiper-button swiper-button_prev btn button_prev-card"></div>
             <div class="swiper-button swiper-button_next btn button_next-card"></div>
@@ -77,7 +81,7 @@ export function createFullCard(props: IAddedSights): HTMLDivElement {
 
 }
 
-export function createMapCard(props: IAddedSights): HTMLEl {
+export function createMapCard({data: props}): HTMLEl {
   const $card: HTMLEl = document.createElement('div');
   $card.classList.add('map-card-item');
 
@@ -85,12 +89,7 @@ export function createMapCard(props: IAddedSights): HTMLEl {
     <h3>${props.title}</h3>
     <div class="full-card__slider">
       <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <img src="img/photo-slide2.jpg" alt="слайд: фто міста">
-        </div>
-        <div class="swiper-slide">
-          <img src="img/photo-slide3.jpg" alt="слайд: фто міста">
-        </div>
+  ${renderSlider(props.imgArr)}
       </div>
       <div class="swiper-button swiper-button_prev btn button_prev-card"></div>
       <div class="swiper-button swiper-button_next btn button_next-card"></div>
