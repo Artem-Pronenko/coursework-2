@@ -6,10 +6,12 @@ import {createPrevCard, createWarningCard} from './module/renderCards';
 import {governmentDOMCard, governmentDOMMap, sliceText} from './module/governmentDOM';
 import {HTMLEl} from './module/type';
 import {account, AuthStateChanged} from './module/accountLogin';
+import {addedNewSight} from './module/addedNewSight';
 
 search();
 
 document.addEventListener('DOMContentLoaded', (): void => {
+  const buttonAdded = document.getElementById('added-button') as HTMLButtonElement;
   const url: string = window.location.href;
   const lastWordInUrl: string = url.substring(url.lastIndexOf('/') + 1, url.length);
   const data: string = localStorage.getItem('data');
@@ -28,7 +30,8 @@ document.addEventListener('DOMContentLoaded', (): void => {
     governmentDOMMap();
   }
 
+  AuthStateChanged();
+  buttonAdded.addEventListener('click', addedNewSight)
 });
 
 document.getElementById('account-button').addEventListener('click', account);
-document.addEventListener('DOMContentLoaded', AuthStateChanged);

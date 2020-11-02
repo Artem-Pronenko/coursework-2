@@ -136,3 +136,46 @@ export function createUserCard(): HTMLEl {
   return $modal;
 
 }
+
+export function createFormSight(): HTMLEl {
+  const $modal: HTMLEl = document.createElement('div');
+  $modal.classList.add('modal-added-layout');
+
+  $modal.innerHTML = `
+    <div class="modal-added">
+      <button class="close" id="close-added-sight">&#10006;</button>
+      <h3 class="title modal-added__title">Додати нову пам'ятку</h3>
+      <div class="modal-added__content">
+        <form class="modal-added__form">
+          <label>
+            Ім'я
+            <input type="text" placeholder="П’ятничанський замок" class="input-name">
+          </label>
+          <label>
+            Інфромація
+            <input type="text" placeholder="Якийсь опис пам'ятки" class="input-info">
+          </label>
+          <label>
+            Рейтинг
+            <input type="number" placeholder="5" class="input-rating">
+          </label>
+          <label>
+            Вулиця
+            <input type="text" placeholder="Вулиця Мічуріна, 32" class="input-street">
+          </label>
+          <label>
+            Можливі назви через кому
+            <input type="text" placeholder="П’ятничанський замок, замок" class="input-nameArr">
+          </label>
+          <label>
+            Посилання на фото
+            <input type="text" placeholder="https://..." class="input-img">
+          </label>
+          <button class="added-sight">Додати</button>
+        </form>
+      </div>
+    </div>
+  `;
+  return $modal;
+
+}

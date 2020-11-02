@@ -16,23 +16,8 @@ firebase.initializeApp(firebaseConfig);
 
 const db = firebase.firestore();
 
-const objAdd: IAddedSights = {
-  title: 'Бункер Ворошилова',
-  name: ['dost', 'Бункер Ворошилова', 'Бункер', 'Ворошилова'],
-  info: `Створювали бункер протягом 1931-1937 років. Виточували його для прикриття напрямку на Вінницю, а всім казали, що то буде військовий санаторій (але зараз майже так і є).
-Прямо у гранітній скелі було прорубано 28 підземних приміщень: від лазні до дизель-генераторної з системою вентиляції (яка до сих пір збереглась).`,
-  rating: 5,
-  imgArr: [
-    'https://lh3.googleusercontent.com/proxy/53Fn3XVGD1yrDJvGLMgiGgo1q_ir0YyRragYKW274AKQxY25Fh-mQWO7MlbVaMJTl0ZkXSAkkyz_UhHPBAonMnejpjaxoKmaCQkNjlw1IF08Mbf-2nfVnzCEAU2B4bzCbShtPghkUTO_HBlMC5ZJaA99nmwcfKrgcrmFEOfL_KeCV9sXZlfxD7lIw7VK',
-    'https://ua.igotoworld.com/frontend/webcontent/websites/1/images/gallery/28844_800x600_807__400x600_voroshilov_03.jpg'
-  ],
-  feedback: [],
-  street: 'вулиця Князів Коріатовичів',
-
-};
-
-function addSights(objAdd: IAddedSights): void {
-  db.collection('sights').add(objAdd)
+export function addSights(objAdd: IAddedSights): Promise<void> {
+  return db.collection('sights').add(objAdd)
     .then(() => {
       console.log('added')
     })
@@ -89,4 +74,3 @@ export function getSights(name: sightsName, streetBoolean?: boolean) {
 
 }
 
-//document.body.addEventListener('click', addSights.bind(null, objAdd));

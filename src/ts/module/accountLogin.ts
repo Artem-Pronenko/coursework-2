@@ -8,11 +8,12 @@ export function account(): void {
   const buttonSignIn = document.getElementById('button-sign-in') as HTMLButtonElement;
   const buttonSignOut = document.getElementById('button-sign-out') as HTMLButtonElement;
   const buttonNewAccount = document.getElementById('button-new-sign-in') as HTMLButtonElement;
-
+  const buttonAdded = document.getElementById('added-button') as HTMLButtonElement;
 
   if (user) {
     buttonSignIn && buttonSignIn.classList.add('d-n');
     buttonNewAccount && buttonNewAccount.classList.remove('d-n');
+    buttonAdded && buttonAdded.classList.remove('d-n')
   }
 
   function signIn(): void {
@@ -35,9 +36,6 @@ export function account(): void {
 
   function signOut(): void {
     firebase.auth().signOut()
-      .then(() => {
-        console.log('Вышел')
-      })
       .catch(error => {
         console.error(error)
       });
@@ -62,14 +60,17 @@ export function AuthStateChanged(): void {
   firebase.auth().onAuthStateChanged(user => {
     const buttonSignIn = document.getElementById('button-sign-in') as HTMLButtonElement;
     const buttonNewAccount = document.getElementById('button-new-sign-in') as HTMLButtonElement;
+    const buttonAdded = document.getElementById('added-button') as HTMLButtonElement;
     if (user) {
       document.getElementById('out-user-name').textContent = user.displayName;
       buttonSignIn && buttonSignIn.classList.add('d-n');
-      buttonNewAccount && buttonNewAccount.classList.remove('d-n')
+      buttonNewAccount && buttonNewAccount.classList.remove('d-n');
+      buttonAdded && buttonAdded.classList.remove('d-n')
     } else {
+      document.getElementById('out-user-name').textContent = '';
       buttonSignIn && buttonSignIn.classList.remove('d-n');
       buttonNewAccount && buttonNewAccount.classList.add('d-n');
-      document.getElementById('out-user-name').textContent = '';
+      buttonAdded && buttonAdded.classList.add('d-n')
     }
   });
 

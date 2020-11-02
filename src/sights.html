@@ -23,7 +23,7 @@
     z-index: 999;
     background-color: #161616;
   }
-  
+
   #loader {
     display: block;
     position: relative;
@@ -38,7 +38,7 @@
     -webkit-animation: spin 2s linear infinite;
     animation: spin 2s linear infinite;
   }
-  
+
   #loader:before {
     content: "";
     position: absolute;
@@ -52,7 +52,7 @@
     -webkit-animation: spin 3s linear infinite;
     animation: spin 3s linear infinite;
   }
-  
+
   #loader:after {
     content: "";
     position: absolute;
@@ -66,7 +66,7 @@
     -webkit-animation: spin 1.5s linear infinite;
     animation: spin 1.5s linear infinite;
   }
-  
+
   @-webkit-keyframes spin {
     0% {
       -webkit-transform: rotate(0deg);
@@ -79,7 +79,7 @@
       transform: rotate(360deg);
     }
   }
-  
+
   @keyframes spin {
     0% {
       -webkit-transform: rotate(0deg);
@@ -118,6 +118,9 @@
         <li class="navigation-item btn user-account">
           <button class="user-icon" id="account-button"></button>
           <span id="out-user-name"></span>
+        </li>
+        <li class="navigation-item btn">
+          <button class="added-button d-n" id="added-button"></button>
         </li>
       </ul>
     </nav>
