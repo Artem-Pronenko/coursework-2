@@ -167,10 +167,11 @@ export function createFormSight(): HTMLEl {
             Можливі назви через кому
             <input type="text" placeholder="П’ятничанський замок, замок" class="input-nameArr">
           </label>
-          <label>
+          <label class="label-img">
             Посилання на фото
             <input type="text" placeholder="https://..." class="input-img">
           </label>
+          <div class="added-button added-img-input"></div>
           <button class="added-sight">Додати</button>
         </form>
       </div>
