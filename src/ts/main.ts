@@ -17,14 +17,14 @@ document.addEventListener('DOMContentLoaded', (): void => {
   const data: string = localStorage.getItem('data');
   const cardsOut: HTMLEl = document.getElementById('cards-out');
 
-  if (lastWordInUrl === 'sights.html' && JSON.parse(data).length) {
+  if (lastWordInUrl === 'sights.html' && (JSON.parse(data) && JSON.parse(data).length)) {
     JSON.parse(data).forEach(item => cardsOut.append(createPrevCard(item)));
 
     const infoText: NodeListOf<HTMLEl> = document.querySelectorAll('.card-info');
     sliceText(infoText);
 
     governmentDOMCard();
-  } else if (lastWordInUrl === 'sights.html' && !JSON.parse(data).length) {
+  } else if (lastWordInUrl === 'sights.html' && !JSON.parse(data)) {
     cardsOut.append(createWarningCard('Таких пам\'яток не знайдено. Або на цій вулиці їх немає!'));
   } else if (lastWordInUrl === 'index.html' || lastWordInUrl === '') {
     governmentDOMMap();

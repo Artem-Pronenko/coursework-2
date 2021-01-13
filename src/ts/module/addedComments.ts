@@ -1,5 +1,6 @@
 import {getSights, setSights} from './db';
-import * as firebase from 'firebase';
+import * as firebase from 'firebase/app';
+import 'firebase/auth';
 
 export function addedComments (oldComments: Array<object>, docId: string) {
   const addedForm = document.getElementById('added-comments-form');
@@ -12,7 +13,7 @@ export function addedComments (oldComments: Array<object>, docId: string) {
 
     if (inputValue.trim() === '') {
       document.querySelector('.invalid').classList.remove('d-n');
-      return false
+      return false;
     }
 
     setSights(userName, inputValue, oldComments, docId).then(() => {

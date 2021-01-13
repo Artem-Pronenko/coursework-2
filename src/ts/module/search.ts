@@ -2,16 +2,16 @@ import {getSights} from './db';
 import {HTMLEl} from './type';
 
 export const search = (): void => {
+  const searchForm = document.getElementById('search-form') as HTMLFormElement;
   const modalSearch: HTMLEl = document.getElementById('modal-search');
   const searchInput = document.getElementById('search-input') as HTMLInputElement;
 
-  const handlerListener = (event): void => {
+  const handlerListener = (event) => {
     const {target} = event;
     if (target.matches('#search-open-button, #close-search')) {
       modalSearch.classList.toggle('modal-active');
-    } else if (target.matches('#modal-button-search')) {
-      valid();
     }
+
     // поиск по улицам
     if (target.closest('.search-navigation__item > button')) {
       getSights(target.textContent, true).then(() => location.href = 'sights.html');
@@ -21,6 +21,10 @@ export const search = (): void => {
     if (target.matches('#all-sights')) {
       getSights('dost').then(() => location.href = 'sights.html');
     }
+  }
+  const handlerSubmit = (event): void => {
+    event.preventDefault();
+    valid();
   };
 
   // базовая проверка на валидность
@@ -35,5 +39,6 @@ export const search = (): void => {
     }
   };
 
+  searchForm && searchForm.addEventListener('submit', handlerSubmit);
   document.body.addEventListener('click', handlerListener);
 };
