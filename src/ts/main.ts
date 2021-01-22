@@ -1,5 +1,6 @@
 import '../less/style.less';
 import './module/sliders';
+import './module/dropMenu';
 import {search} from './module/search';
 import './module/db';
 import {createPrevCard, createWarningCard} from './module/renderCards';
