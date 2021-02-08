@@ -55,12 +55,13 @@ export function createFullCard(props: IAddedSights): HTMLDivElement {
             <div class="swiper-button swiper-button_next btn button_next-card"></div>
           </div>
           <p class="full-card__text">${props.info}</p>
+          <button class="btn btn-show-map">Показати на карті</button>
           <div class="added-comments added-comments__block">
             <form class="added-comments__form" id="added-comments-form">
-              <label for="added-comments-input">Оставить комментарий</label>
+              <label for="added-comments-input">Залишити коментар</label>
               <textarea 
                 type="text" 
-                placeholder="Оставить комментарий" 
+                placeholder="Ваш коментар" 
                 class="added-comments-input" 
                 id="added-comments-input"
                ></textarea>

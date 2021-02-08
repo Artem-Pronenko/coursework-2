@@ -4,6 +4,7 @@ import {IAddedSightsId} from './interfaces';
 import {sliderCard} from './sliders';
 import {getSights} from './db';
 import {addedComments} from './addedComments';
+import {showMap} from "./showMap";
 
 export function governmentDOMCard(): void {
   const cardWrapper: HTMLEl = document.getElementById('cards-out');
@@ -25,6 +26,7 @@ export function governmentDOMCard(): void {
       cardClose = document.querySelector('.full-card__close');
       cardClose.addEventListener('click', closeCard.bind(null, document.querySelector('.card-wrap')));
       addedComments(cardTitle.feedback, cardTitle.id);
+      showMap()
     }
 
   }
@@ -34,7 +36,7 @@ export function governmentDOMCard(): void {
 }
 
 export function governmentDOMMap(): void {
-  const map: HTMLEl = document.getElementById('map');
+  const maps: HTMLEl = document.getElementById('maps');
 
 
   function goToFullCard() {
@@ -72,7 +74,7 @@ export function governmentDOMMap(): void {
 
   }
 
-  map.addEventListener('click', openMapCard);
+  maps.addEventListener('click', openMapCard);
 }
 
 export function sliceText(textArr) {
